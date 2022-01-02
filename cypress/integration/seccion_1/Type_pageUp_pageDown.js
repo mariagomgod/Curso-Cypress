@@ -18,4 +18,12 @@ describe("Ejemplo de Type pageUpd, pageDown", () => {
         cy.wait(1000);
     })
 
+    it.only("Type ultimo", () => {
+        cy.visit("https://demoqa.com/text-box");
+        cy.title().should('eq', 'ToolsQA');
+        cy.wait(1000);
+        cy.get('#userName').type('{pagedown}');
+        cy.wait(1000);
+    })
+
 }) 
