@@ -1,5 +1,5 @@
 
-describe("Bienvenidoa al curso de Cypress sección 1", () => {
+describe("Bienvenido al curso de Cypress sección 1", () => {
     
     it("mi primer test -> Hola mundo", () => {
         cy.log("Hola mundo");
