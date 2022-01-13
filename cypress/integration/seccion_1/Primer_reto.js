@@ -23,6 +23,17 @@ describe("Primer reto", () => {
         cy.get("#searchBox").should("be.visible").type("Cierra");
         cy.wait(1000);
         cy.get("#searchBox").should("be.visible").clear();
+
+        //Editar un campo
+        cy.get("#edit-record-2 > svg").should("not.be.visible").click();
+        cy.wait(1000);
+        cy.get("#age").should("be.visible").clear().type("50");
+        cy.get("#salary").should("be.visible").clear().type("50000");
+        cy.get("#submit").should("be.visible").click();
+
+        //Borrando el campo
+        cy.wait(1000);
+        cy.get("#delete-record-2").should("be.visible").click();
     })
 
 })
