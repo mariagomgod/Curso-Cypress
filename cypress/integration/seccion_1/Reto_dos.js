@@ -16,6 +16,15 @@ describe("Probando la aplicación", () => {
 
         // Añadir
         cy.get("#add").should("be.visible").click();
+        cy.get("#name").should("be.visible").type("cypress");
+        cy.get("#introduced").should("be.visible").type("2021-03-15");
+        cy.get("#discontinued").should("be.visible").type("2025-03-15");
+
+        // Combo
+        cy.get("#company").should("be.visible").select("IBM").should("have.value", "13");
+        cy.get(".primary").should("be.visible").click();
+        cy.xpath("//input[@id='searchbox']").should("be.visible").type("cypress");
+        cy.get("#searchsubmit").should("be.visible").click();
     })
 
 })
