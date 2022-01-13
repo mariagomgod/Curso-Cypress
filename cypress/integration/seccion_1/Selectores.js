@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 require('cypress-plugin-tab')
+require('cypress-xpath')
 
 describe("Tipos de Selectores", () => {
     
@@ -13,12 +14,22 @@ describe("Tipos de Selectores", () => {
         cy.get("#userEmail").should("be.visible").type("demo@gmail.com");
     })
 
-    it.only("Selector por atributo", () => {
+    it("Selector por atributo", () => {
         cy.visit("https://demoqa.com/text-box");
         cy.title().should('eq', 'ToolsQA');
         cy.wait(1000);
 
         cy.get("[placeholder='Full Name']").should("be.visible").type("Juan Perez Chavez");
+    })
+
+    it.only("Selector por Xpath", () => {
+        cy.visit("https://demoqa.com/text-box");
+        cy.title().should('eq', 'ToolsQA');
+        cy.wait(1000);
+
+        cy.xpath("//*[@id='userName']").should("be.visible").type("Juan Perez");
+        cy.xpath("//input[@id='userEmail']").should("be.visible").type("juan@gmail.com");
+        cy.xpath("//textarea[@id='currentAddress']").should("be.visible").type("Demo de la dirección");
     })
 
 })
