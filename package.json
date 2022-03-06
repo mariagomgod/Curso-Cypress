@@ -4,7 +4,7 @@
   "description": "\"Curso de Cypress 2021\"",
   "main": "index.js",
   "dependencies": {
-    "cypress": "^9.1.1"
+    "cypress": "3.5.0"
   },
   "devDependencies": {
     "cypress-plugin-tab": "^1.0.5",
