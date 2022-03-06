@@ -10,7 +10,7 @@ describe("Selects", () => {
         return false
     });
 
-    it("selects", () => {
+    it.skip("selects", () => {
         cy.visit("https://web.archive.org/web/20180920020915/http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
         cy.title().should("eq", "Selenium Easy Demo - Automate All Scenarios");
         cy.wait(1000);
@@ -20,13 +20,19 @@ describe("Selects", () => {
 
     })
 
-    it.only("selects", () => {
+    it.skip("selects", () => {
         cy.visit("https://www.google.com");
         cy.title().should("eq", "Google");
         cy.wait(1000);
-        cy.get("[name='q']").should("be.visible").type("Ferrari");
+        cy.get("[name='q']").should("be.visible").type("Ferrari").type("{enter}");
+        cy.get(".MUFPAc > :nth-child(2) > a").click();
+    })
+
+    it.only("selects", () => {
+        cy.visit("https://web.archive.org/web/20180920020915/http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
+        cy.title().should("eq", "Selenium Easy Demo - Automate All Scenarios");
         cy.wait(1000);
-        cy.get("#voiceSearchButton").should("be.visible").click();
+        cy.get("#multi-select").should("be.visible").select(['California', 'Ohio', 'Washington']);
     })
 
 })
