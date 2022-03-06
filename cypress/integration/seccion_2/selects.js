@@ -32,7 +32,9 @@ describe("Selects", () => {
         cy.visit("https://web.archive.org/web/20180920020915/http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
         cy.title().should("eq", "Selenium Easy Demo - Automate All Scenarios");
         cy.wait(1000);
-        cy.get("#multi-select").should("be.visible").select(['California', 'Ohio', 'Washington']);
+        cy.get("#multi-select").should("be.visible").select(['California', 'Ohio', 'Washington']).then(() => {
+            cy.get("#printMe").should("be.visible").click();
+        });
     })
 
 })
