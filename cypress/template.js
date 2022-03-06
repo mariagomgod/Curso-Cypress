@@ -3,10 +3,10 @@
 require('cypress-plugin-tab')
 require('cypress-xpath')
 
-describe(" ", () => {
+describe("", () => {
     
-    it(" ", () => {
-        cy.visit(" ");
+    it("", () => {
+        cy.visit("");
     })
 
 })
