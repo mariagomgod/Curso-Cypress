@@ -49,7 +49,7 @@ describe("Asserts", () => {
         });
     })
 
-    it("Assert contain.text y have.text", () => {
+    it.skip("Assert contain.text y have.text", () => {
         cy.visit("https://demoqa.com/text-box");
         cy.title().should("eq", "ToolsQA");
         cy.wait(1000);
@@ -62,6 +62,19 @@ describe("Asserts", () => {
 
         // contain.text basta con tener una parte del texto a validar (no todo el texto exacto)
         cy.get("#name").should("contain.text", "Ramon Sanz");
+    })
+
+    it("Assert have.value y then", () => {
+        cy.visit("https://demoqa.com/text-box");
+        cy.title().should("eq", "ToolsQA");
+        cy.wait(1000);
+        cy.get("#userName").should("be.visible").type("Ramon Sanz");
+        cy.get("#userName").should("have.value", "Ramon Sanz").then(() => {
+            cy.get("#userEmail").should("be.visible").type("ramon@gmail.com");
+            cy.get("#submit").should("be.visible").click();
+        });
+        
+
     })
 
 })
