@@ -19,7 +19,7 @@ describe("Asserts", () => {
         cy.get(".product-container").find(".product-image-container").eq(2).click();
     })
 
-    it("Assert find, eq, validando que el vestido sea nuevo y el precio", () => {
+    it.skip("Assert find, eq, validando que el vestido sea nuevo y el precio", () => {
         cy.visit("http://automationpractice.com/index.php");
         cy.title().should("eq", "My Store");
         cy.wait(1000);
@@ -49,5 +49,19 @@ describe("Asserts", () => {
         });
     })
 
+    it("Assert contain.text y have.text", () => {
+        cy.visit("https://demoqa.com/text-box");
+        cy.title().should("eq", "ToolsQA");
+        cy.wait(1000);
+        cy.get("#userName").should("be.visible").type("Ramon Sanz");
+        cy.get("#userEmail").should("be.visible").type("ramon@gmail.com");
+        cy.get("#submit").should("be.visible").click();
+
+        // have.text tiene que tener el texto a validar tal cuál (exacto)
+        cy.get("#name").should("have.text", "Name:Ramon Sanz");
+
+        // contain.text basta con tener una parte del texto a validar (no todo el texto exacto)
+        cy.get("#name").should("contain.text", "Ramon Sanz");
+    })
 
 })
