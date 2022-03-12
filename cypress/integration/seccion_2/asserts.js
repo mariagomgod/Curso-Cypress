@@ -4,7 +4,13 @@ require('cypress-plugin-tab')
 require('cypress-xpath')
 
 describe("Asserts", () => {
-    
+
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false
+    });
+
     it.skip("Assert contains", () => {
         cy.visit("http://automationpractice.com/index.php");
         cy.title().should("eq", "My Store");
@@ -96,12 +102,19 @@ describe("Asserts", () => {
         });
     })
 
-    it("Assert not.have.class y la función and", () => {
+    it.skip("Assert not.have.class y la función and", () => {
         cy.visit("https://demoqa.com/text-box");
         cy.title().should("eq", "ToolsQA");
         cy.wait(1000);
         cy.get("#userName").should("be.visible").and("not.have.class", "mr-sm-22").then(() => {
             cy.get("#userName"). type("Pablo Motos");
         });
+    })
+
+    it("Assert length y have.css", () => {
+        cy.visit("https://web.archive.org/web/20180920012000/http://www.seleniumeasy.com/test/table-pagination-demo.html");
+        cy.title().should("eq", "Selenium Easy - Table with Pagination Demo");
+        cy.wait(1000);
+        cy.get("#myTable > tr > td").should("have.length", 91).and("have.css", "padding", "8px");
     })
 })
