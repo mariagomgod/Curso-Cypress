@@ -84,7 +84,7 @@ describe("Asserts", () => {
         });
     })
 
-    it("Assert have.class y la función and", () => {
+    it.skip("Assert have.class y la función and", () => {
         cy.visit("https://demoqa.com/text-box");
         cy.title().should("eq", "ToolsQA");
         cy.wait(1000);
@@ -92,6 +92,15 @@ describe("Asserts", () => {
         // con la función and, estamos diciendo que cumpla que sea visible y que además 
         // tenga la clase que se especifica, es decir, tiene que cumplir ambas condiciones.
         cy.get("#userName").should("be.visible").and("have.class", "mr-sm-2").then(() => {
+            cy.get("#userName"). type("Pablo Motos");
+        });
+    })
+
+    it("Assert not.have.class y la función and", () => {
+        cy.visit("https://demoqa.com/text-box");
+        cy.title().should("eq", "ToolsQA");
+        cy.wait(1000);
+        cy.get("#userName").should("be.visible").and("not.have.class", "mr-sm-22").then(() => {
             cy.get("#userName"). type("Pablo Motos");
         });
     })
