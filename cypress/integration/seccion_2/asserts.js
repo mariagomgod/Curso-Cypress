@@ -140,9 +140,25 @@ describe("Asserts", () => {
         cy.visit("https://web.archive.org/web/20180926132852/http://www.seleniumeasy.com/test/basic-first-form-demo.html");
         cy.title().should("eq", "Selenium Easy Demo - Simple Form to Automate using Selenium");
         cy.wait(tiempo);
-        cy.get("#sum1").should("be.visible").and("have.class", "form-control").type(10);
-        cy.get("#sum2").should("be.visible").and("have.class", "form-control").type(20);
+
+        let a = 10;
+        let b = 20 + a;
+
+        cy.get("#sum1").should("be.visible").and("have.class", "form-control").type(a);
+        cy.get("#sum2").should("be.visible").and("have.class", "form-control").type(b);
         cy.contains("[type='button']", "Get Total").should("be.visible").click({force:true});
-    
+        cy.get("#displayvalue").should("be.visible").then((e) => {
+
+            let r = a + b;
+            cy.log("el valor de r = " + r);
+            let resultado = e.text();
+            cy.log(resultado);
+
+            if(r == resultado) {
+                cy.log("Son iguales");
+            } else {
+                cy.log("El resultado es incorrecto");
+            }
+        })
     })
 })
