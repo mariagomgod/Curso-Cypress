@@ -141,11 +141,13 @@ describe("Asserts", () => {
         cy.title().should("eq", "Selenium Easy Demo - Simple Form to Automate using Selenium");
         cy.wait(tiempo);
 
-        let a = 10;
-        let b = 20 + a;
+        let a = 5;
+        let b = 5;
 
         cy.get("#sum1").should("be.visible").and("have.class", "form-control").type(a);
+        cy.wait(tiempo);
         cy.get("#sum2").should("be.visible").and("have.class", "form-control").type(b);
+        cy.wait(tiempo);
         cy.contains("[type='button']", "Get Total").should("be.visible").click({force:true});
         cy.get("#displayvalue").should("be.visible").then((e) => {
 
@@ -158,6 +160,28 @@ describe("Asserts", () => {
                 cy.log("Son iguales");
             } else {
                 cy.log("El resultado es incorrecto");
+            }
+
+            if(resultado > 50) {
+
+                a = a - 10;
+                b = b - 10;
+
+                cy.get("#sum1").should("be.visible").and("have.class", "form-control").clear().type(a);
+                cy.wait(tiempo);
+                cy.get("#sum2").should("be.visible").and("have.class", "form-control").clear().type(b);
+                cy.wait(tiempo);
+                cy.contains("[type='button']", "Get Total").should("be.visible").click({force:true});
+            } else {
+
+                a = a + 5;
+                b = b + 5;
+
+                cy.get("#sum1").should("be.visible").and("have.class", "form-control").clear().type(a);
+                cy.wait(tiempo);
+                cy.get("#sum2").should("be.visible").and("have.class", "form-control").clear().type(b);
+                cy.wait(tiempo);
+                cy.contains("[type='button']", "Get Total").should("be.visible").click({force:true});
             }
         })
     })
