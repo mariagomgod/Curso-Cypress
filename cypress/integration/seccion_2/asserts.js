@@ -118,7 +118,7 @@ describe("Asserts", () => {
         cy.get("#myTable > tr > td").should("have.length", 91).and("have.css", "padding", "8px");
     })
 
-    it("Contains", () => {
+    it.skip("Contains", () => {
 
         let tiempo = 1000;
 
@@ -131,5 +131,18 @@ describe("Asserts", () => {
 
         cy.get(".form-group > #user-message").should("be.visible").type("Demo del contenido", {force:true});
         cy.contains("[type='button']", "Show Message").should("be.visible").click({force:true});
+    })
+
+    it("Reto asserts", () => {
+
+        let tiempo = 1000;
+
+        cy.visit("https://web.archive.org/web/20180926132852/http://www.seleniumeasy.com/test/basic-first-form-demo.html");
+        cy.title().should("eq", "Selenium Easy Demo - Simple Form to Automate using Selenium");
+        cy.wait(tiempo);
+        cy.get("#sum1").should("be.visible").and("have.class", "form-control").type(10);
+        cy.get("#sum2").should("be.visible").and("have.class", "form-control").type(20);
+        cy.contains("[type='button']", "Get Total").should("be.visible").click({force:true});
+    
     })
 })
