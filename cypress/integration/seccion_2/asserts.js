@@ -111,10 +111,25 @@ describe("Asserts", () => {
         });
     })
 
-    it("Assert length y have.css", () => {
+    it.skip("Assert length y have.css", () => {
         cy.visit("https://web.archive.org/web/20180920012000/http://www.seleniumeasy.com/test/table-pagination-demo.html");
         cy.title().should("eq", "Selenium Easy - Table with Pagination Demo");
         cy.wait(1000);
         cy.get("#myTable > tr > td").should("have.length", 91).and("have.css", "padding", "8px");
+    })
+
+    it("Contains", () => {
+
+        let tiempo = 1000;
+
+        cy.visit("https://web.archive.org/web/20180926132852/http://www.seleniumeasy.com/test/basic-first-form-demo.html");
+        cy.title().should("eq", "Selenium Easy Demo - Simple Form to Automate using Selenium");
+        cy.wait(tiempo);
+
+        // Eliminando ventana
+        //cy.get(".at-cm-no-button").should("be.visible").click({force:true});
+
+        cy.get(".form-group > #user-message").should("be.visible").type("Demo del contenido", {force:true});
+        cy.contains("[type='button']", "Show Message").should("be.visible").click({force:true});
     })
 })
