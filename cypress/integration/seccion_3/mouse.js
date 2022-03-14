@@ -20,7 +20,7 @@ describe("eventos mouse", () => {
         cy.get("#column-a").drag("#column-b", {force:true});
     })
 
-    it.skip("drag and drop 2", () => {
+    it("drag and drop 2", () => {
         cy.visit("https://web.archive.org/web/20180926132852/http://www.seleniumeasy.com/test/drag-and-drop-demo.html");
         cy.title().should('eq', 'Selenium Easy Demo - Drag and Drop Demo');
         cy.wait(1000);
