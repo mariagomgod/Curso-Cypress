@@ -27,7 +27,7 @@ describe("eventos mouse", () => {
         cy.get("#todrag > :nth-child(2)").drag("#mydropzone", {force:true});
     })
 
-    it("Mouse over", () => {
+    it.skip("Mouse over", () => {
         cy.visit("https://www.way2automation.com/");
         cy.title().should('eq', 'Online Certification Course | Selenium Online Training | Selenium Tutorial');
         cy.wait(1000);
@@ -37,5 +37,16 @@ describe("eventos mouse", () => {
         // .invoke("removeAttr", "target") se puede utilizar cuando pinchamos en una página
         // y se abre otra página adicional.
         cy.contains("Selenium Python Video Tutorials").invoke("removeAttr", "target");
+    })
+
+    it("Slider", () => {
+        cy.visit("https://web.archive.org/web/20180926132852/http://www.seleniumeasy.com/test/drag-drop-range-sliders-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Drag and Drop Range Sliders');
+        cy.wait(1000);
+        cy.get("#slider1 > .range > input").invoke("attr", "value", "90");
+        cy.wait(1000);
+        cy.get("#slider3 > .range > input").invoke("attr", "value", "90");
+        cy.wait(1000);
+        cy.get("#slider5 > .range > input").invoke("attr", "value", "90");
     })
 })
