@@ -21,12 +21,30 @@ describe("Bucles For - Each", () => {
 
     })
 
-    it("For dos", () => {
+    it.skip("For dos", () => {
         
         for(let i = 1; i <= 100; i++) {
             let t = 5
             cy.log(t + " x " + i + " = " + t * i);
         }
+        
+    })
+
+    
+    it("Each uno", () => {
+
+        cy.visit("http://automationpractice.com/index.php");
+        cy.title().should('eq', 'My Store');
+        cy.wait(1000);
+        cy.get(".product-name").each(($el, index, $list) => {
+            
+           //cy.log($el.text());
+
+            let vestido = $el.text();
+
+            cy.log(vestido);
+
+        })
         
     })
 
