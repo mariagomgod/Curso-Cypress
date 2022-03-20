@@ -48,7 +48,7 @@ describe("Bucles For - Each", () => {
         
     })
 
-    it("Each dos", () => {
+    it.skip("Each dos", () => {
 
         cy.visit("http://automationpractice.com/index.php");
         cy.title().should('eq', 'My Store');
@@ -62,6 +62,35 @@ describe("Bucles For - Each", () => {
                 cy.wrap($el).click();
             }
 
+        })
+        
+    })
+
+    it("Each reto", () => {
+
+        cy.visit("http://automationpractice.com/index.php");
+        cy.title().should('eq', 'My Store');
+        cy.wait(200);
+        const datos = [];
+
+        cy.get("#center_column .product-name").each(($el, index, $list) => {
+
+            datos[index] = $el.text();
+
+        }).then(() => {
+
+            for(let x = 0; x <= datos.length; x++) {
+                cy.get("#center_column .product-name").eq(x).click({force:true});
+                cy.wait(200);
+                cy.get("#quantity_wanted").should("be.visible").clear().type("4");
+                cy.get("#group_1").select("M").should("have.value", "2");
+                cy.wait(200);
+                cy.get(".exclusive > span").should("be.visible").click({force:true});
+                cy.wait(200);
+                cy.xpath("//span[contains(., 'Proceed to checkout')]").click({force:true});
+                cy.wait(200);
+                cy.get(".icon-home").should("be.visible").click({force:true});
+            }
         })
         
     })
