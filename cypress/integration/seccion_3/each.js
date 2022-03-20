@@ -31,7 +31,7 @@ describe("Bucles For - Each", () => {
     })
 
     
-    it("Each uno", () => {
+    it.skip("Each uno", () => {
 
         cy.visit("http://automationpractice.com/index.php");
         cy.title().should('eq', 'My Store');
@@ -43,6 +43,24 @@ describe("Bucles For - Each", () => {
             let vestido = $el.text();
 
             cy.log(vestido);
+
+        })
+        
+    })
+
+    it("Each dos", () => {
+
+        cy.visit("http://automationpractice.com/index.php");
+        cy.title().should('eq', 'My Store');
+        cy.wait(1000);
+        cy.get(".product-name").each(($el, index, $list) => {
+
+            let vestido = $el.text();
+
+            if(vestido.includes("Printed Summer Dress")) {
+                // wrap envuelve la promesa devuelta por el código de la aplicación
+                cy.wrap($el).click();
+            }
 
         })
         
