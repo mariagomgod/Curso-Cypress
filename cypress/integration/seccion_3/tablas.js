@@ -70,7 +70,7 @@ describe("Elementos de una tabla", () => {
 
     })
 
-    it("Elemento NextAll", () => {
+    it.skip("Elemento NextAll", () => {
 
         cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
         cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
@@ -78,7 +78,13 @@ describe("Elementos de una tabla", () => {
         cy.get("[type='button']").should("contain", "Green");
         cy.wait(1500);
         cy.get("[type='button']").should("contain", "Green").nextAll().should("have.length", 4);
-        
+    })
 
+    it("Elemento parent", () => {
+
+        cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
+        cy.wait(1500);
+        cy.get("[type='button']").parent().should("have.class", "btn-group");
     })
 })
