@@ -98,7 +98,7 @@ describe("Elementos de una tabla", () => {
         cy.get("[type='checkbox']").check({force:true});
     })
 
-    it("Reto de las tablas con for", () => {
+    it.skip("Reto de las tablas con for", () => {
 
         cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
         cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
@@ -106,6 +106,34 @@ describe("Elementos de una tabla", () => {
 
         for (let x = 1; x <= 4; x++) {
             cy.get("[type='button']").eq(x).click({force:true});
+            cy.wait(1500);
+            cy.get("[type='checkbox']").check({force:true});
+            cy.wait(1500);
+        }
+        
+    })
+
+    it("Reto de las tablas con for y asserts", () => {
+
+        cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
+        cy.wait(1500);
+
+        for (let x = 1; x <= 4; x++) {
+
+            let nombreBoton = "";
+
+            if (x == 1) {
+                nombreBoton = "Green";
+            } else if (x == 2) {
+                nombreBoton = "Orange";
+            } else if (x == 3) {
+                nombreBoton = "Red";
+            } else {
+                nombreBoton = "All";
+            }
+
+            cy.get("[type='button']").eq(x).should("contain", nombreBoton).click({force:true});
             cy.wait(1500);
             cy.get("[type='checkbox']").check({force:true});
             cy.wait(1500);
