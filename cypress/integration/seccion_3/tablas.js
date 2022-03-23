@@ -13,7 +13,7 @@ describe("Elementos de una tabla", () => {
         return false
     });
 
-    it("Children", () => {
+    it.skip("Children", () => {
 
         cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
         cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
@@ -24,5 +24,15 @@ describe("Elementos de una tabla", () => {
         cy.wait(1500);
         cy.get(".btn-group").children(".btn-danger").should("contain", "Red").click({force:true});
         
+    })
+
+    it("Elemento EQ", () => {
+
+        cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
+        cy.wait(1500);
+        cy.get("[type='button']").eq(2).should("contain", "Orange").click({force:true});
+        cy.wait(1500);
+        cy.get("[type='button']").eq(4).should("contain", "All").click({force:true});
     })
 })
