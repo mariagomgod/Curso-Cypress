@@ -48,7 +48,7 @@ describe("Elementos de una tabla", () => {
         cy.get("[type='button']").filter(".btn-warning").should("contain", "Orange").click();
     })
 
-    it("Elemento Find", () => {
+    it.skip("Elemento Find", () => {
 
         cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
         cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
@@ -57,5 +57,16 @@ describe("Elementos de una tabla", () => {
         cy.wait(1500);
         cy.get(".btn-group").contains("Orange").click();
        
+    })
+
+    it("Elementos First y Last", () => {
+
+        cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
+        cy.wait(1500);
+        cy.get(".btn-group").find("button").first().click({force:true});
+        cy.wait(1500);
+        cy.get(".btn-group").find("button").last().click({force:true});
+
     })
 })
