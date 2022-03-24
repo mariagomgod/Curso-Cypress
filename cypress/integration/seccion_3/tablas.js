@@ -164,7 +164,7 @@ describe("Elementos de una tabla", () => {
         })
     })
 
-    it("Sumando los valores de los campos de la tabla con la clase .odd", () => {
+    it.skip("Sumando los valores de los campos de la tabla con la clase .odd", () => {
 
         cy.visit("https://web.archive.org/web/20180920023230/http://www.seleniumeasy.com/test/table-sort-search-demo.html");
         cy.title().should('eq', 'Selenium Easy - Tabel Sort and Search Demo');
@@ -194,5 +194,29 @@ describe("Elementos de una tabla", () => {
             expect(cantidadOdd).eq(394);
 
         })
+    })
+
+    it("Valor de un campo en específico", () => {
+
+        cy.visit("https://web.archive.org/web/20180920023230/http://www.seleniumeasy.com/test/table-sort-search-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Tabel Sort and Search Demo');
+        cy.wait(1000);
+        
+        const campo = cy.get("tbody > :nth-child(7) > :nth-child(2)");
+
+        campo.each(($el, index, $list) => {
+            const dato = $el.text();
+            cy.log(dato);
+
+            if (dato.includes("Javascript Developer")) {
+                campo.eq(index).next().next().then((age) => {
+                    const edad = age.text();
+                    cy.log(edad);
+                    cy.log("La edad de Javascript Developer es: " + edad);
+                    expect(edad).to.equal('39');
+                })
+            }
+        })
+        
     })
 })
