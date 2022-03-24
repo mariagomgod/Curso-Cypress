@@ -21,7 +21,14 @@ describe("Alias", () => {
         cy.get("#firstname").should("be.visible").as("name");
         cy.get("@name").type("Pedro");
         cy.get("#surname").should("be.visible").as("sn");
-        cy.get("@sn").type("Martínez");
+        cy.get("@sn").type("Martínez Ojeda");
+        cy.get("#age").should("be.visible").as("ag");
+        cy.get("@ag").type("30");
+        cy.get("#country").should("be.visible").as("cn");
+        cy.get("@cn").select("Spain").should("have.value", "Spain");
+        cy.get("#notes").should("be.visible").as("nt");
+        cy.get("@nt").type("Demo del contenido");
+        cy.get("[type='submit']").click({force:true});
 
     })
 })
