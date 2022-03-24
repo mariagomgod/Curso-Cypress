@@ -113,7 +113,7 @@ describe("Elementos de una tabla", () => {
         
     })
 
-    it("Reto de las tablas con for y asserts", () => {
+    it.skip("Reto de las tablas con for y asserts", () => {
 
         cy.visit("https://web.archive.org/web/20180920012603/http://www.seleniumeasy.com/test/table-records-filter-demo.html");
         cy.title().should('eq', 'Selenium Easy - Table Data Filter Demo');
@@ -139,5 +139,28 @@ describe("Elementos de una tabla", () => {
             cy.wait(1500);
         }
         
+    })
+
+    it("Reto mostrando los campos", () => {
+
+        cy.visit("https://web.archive.org/web/20180920023230/http://www.seleniumeasy.com/test/table-sort-search-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Tabel Sort and Search Demo');
+        cy.wait(1500);
+        
+        const datos = [];
+
+        cy.get(".odd td").each(($el, index, $list) => {
+
+            datos[index] = $el.text();
+
+        }).then(() => {
+
+            for (let i = 0; i <= datos.length; i++) {
+
+                cy.log(datos[i]);
+                
+            }
+
+        })
     })
 })
