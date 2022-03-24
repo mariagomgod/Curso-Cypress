@@ -1,0 +1,25 @@
+/// <reference types="Cypress" />
+
+require('cypress-plugin-tab')
+require('cypress-xpath')
+require('cypress-file-upload')
+require('@4tw/cypress-drag-drop')
+
+describe("Invoke", () => {
+    
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false
+    });
+
+    it("Invoke text", () => {
+
+        cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
+        cy.title().should('eq', 'Input Validation');
+        cy.wait(1000);
+        // Invoke prueba un contenido HTML
+        cy.get(".page-body > :nth-child(5)").invoke("text").as("info");
+        cy.get("@info").should("contain", "The information will be submitted to the server if it passes client side validation.");
+    })
+})
