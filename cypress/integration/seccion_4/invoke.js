@@ -13,7 +13,7 @@ describe("Invoke", () => {
         return false
     });
 
-    it("Invoke text", () => {
+    it.skip("Invoke text", () => {
 
         cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
         cy.title().should('eq', 'Input Validation');
@@ -25,5 +25,13 @@ describe("Invoke", () => {
         cy.get("@title_name").should("contain", "First name:").then(() => {
             cy.get("#firstname").type("Pedro");
         })
+    })
+
+    it("Invoke style", () => {
+
+        cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
+        cy.title().should('eq', 'Input Validation');
+        cy.wait(1000);
+        cy.get("[for='firstname']").invoke("attr", "style", "color: blue; font-size: 50px");
     })
 })
