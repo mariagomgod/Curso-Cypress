@@ -21,5 +21,9 @@ describe("Invoke", () => {
         // Invoke prueba un contenido HTML
         cy.get(".page-body > :nth-child(5)").invoke("text").as("info");
         cy.get("@info").should("contain", "The information will be submitted to the server if it passes client side validation.");
+        cy.get("[for='firstname']").invoke("text").as("title_name");
+        cy.get("@title_name").should("contain", "First name:").then(() => {
+            cy.get("#firstname").type("Pedro");
+        })
     })
 })
