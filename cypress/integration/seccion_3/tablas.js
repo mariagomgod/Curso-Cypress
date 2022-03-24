@@ -141,7 +141,7 @@ describe("Elementos de una tabla", () => {
         
     })
 
-    it("Reto mostrando los campos", () => {
+    it.skip("Reto mostrando los campos de las tablas", () => {
 
         cy.visit("https://web.archive.org/web/20180920023230/http://www.seleniumeasy.com/test/table-sort-search-demo.html");
         cy.title().should('eq', 'Selenium Easy - Tabel Sort and Search Demo');
@@ -158,8 +158,40 @@ describe("Elementos de una tabla", () => {
             for (let i = 0; i <= datos.length; i++) {
 
                 cy.log(datos[i]);
-                
+
             }
+
+        })
+    })
+
+    it("Sumando los valores de los campos de la tabla con la clase .odd", () => {
+
+        cy.visit("https://web.archive.org/web/20180920023230/http://www.seleniumeasy.com/test/table-sort-search-demo.html");
+        cy.title().should('eq', 'Selenium Easy - Tabel Sort and Search Demo');
+        cy.wait(1500);
+        
+        const datos = [];
+        let cantidadOdd = 0;
+
+        cy.get("[role='row'] td").each(($el, index, $list) => {
+
+            datos[index] = $el.text();
+
+        }).then(() => {
+
+            for (let i = 0; i <= datos.length; i++) {
+
+                cy.log(datos[i]);
+                // Number para datos de tipo numérico
+                if (Number(datos[i])) {
+
+                    cantidadOdd += Number(datos[i]);
+
+                }
+            }
+
+            cy.log("La cantidad total de edades de la página es: " + cantidadOdd);
+            expect(cantidadOdd).eq(394);
 
         })
     })
