@@ -66,11 +66,19 @@ describe("Invoke", () => {
         
     })
 
-    it("Invoke src", () => {
+    it.skip("Invoke src", () => {
 
         cy.visit("https://web.archive.org/web/20180920011703/http://www.seleniumeasy.com/test/bootstrap-modal-demo.html");
         cy.title().should('eq', 'Selenium Easy Demo - Bootstrap Modal Demo to Automate');
         cy.wait(1000);
         cy.xpath("//img[contains(@class,'cbt')]").invoke("attr", "src").should("include", "cbt-sponsor-banner_2x.png");
+    })
+
+    it("Invoke target", () => {
+
+        cy.visit("https://dvwa.co.uk/");
+        cy.title().should('eq', 'DVWA - Damn Vulnerable Web Application');
+        cy.wait(1000);
+        cy.xpath("//*[@id='pagewidth']/div/div[5]/a[2]").invoke("removeAttr", "target").click({force:true});
     })
 })
