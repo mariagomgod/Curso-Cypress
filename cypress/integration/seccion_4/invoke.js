@@ -47,7 +47,7 @@ describe("Invoke", () => {
         cy.get("#firstname").invoke("show", "6s");
     })
 
-    it("Invoke reto ocultar campos, rellenar un campo y mostrar campos", () => {
+    it.skip("Invoke reto ocultar campos, rellenar un campo y mostrar campos", () => {
 
         cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
         cy.title().should('eq', 'Input Validation');
@@ -64,5 +64,13 @@ describe("Invoke", () => {
             cy.get("#surname").type("Olivares Sánchez");
         })
         
+    })
+
+    it("Invoke src", () => {
+
+        cy.visit("https://web.archive.org/web/20180920011703/http://www.seleniumeasy.com/test/bootstrap-modal-demo.html");
+        cy.title().should('eq', 'Selenium Easy Demo - Bootstrap Modal Demo to Automate');
+        cy.wait(1000);
+        cy.xpath("//img[contains(@class,'cbt')]").invoke("attr", "src").should("include", "cbt-sponsor-banner_2x.png");
     })
 })
