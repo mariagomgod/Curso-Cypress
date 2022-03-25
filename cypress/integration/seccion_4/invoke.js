@@ -35,7 +35,7 @@ describe("Invoke", () => {
         cy.get("[for='firstname']").invoke("attr", "style", "color: blue; font-size: 50px");
     })
 
-    it("Invoke ocultar y mostrar", () => {
+    it.skip("Invoke ocultar y mostrar", () => {
 
         cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
         cy.title().should('eq', 'Input Validation');
@@ -45,5 +45,24 @@ describe("Invoke", () => {
         cy.wait(1000);
         cy.get("[for='firstname']").invoke("show", "3s");
         cy.get("#firstname").invoke("show", "6s");
+    })
+
+    it("Invoke reto ocultar campos, rellenar un campo y mostrar campos", () => {
+
+        cy.visit("https://testpages.herokuapp.com/styled/validation/input-validation.html");
+        cy.title().should('eq', 'Input Validation');
+        cy.wait(1000);
+        cy.get("[for='surname']").invoke("hide");
+        cy.get("#surname").invoke("hide");
+        cy.wait(1000);
+        cy.get("[for='firstname']").invoke("text").as("title_name");
+        cy.get("@title_name").should("contain", "First name:").then(() => {
+            cy.get("#firstname").type("Rosa");
+            cy.get("[for='surname']").invoke("show", "3s");
+            cy.get("#surname").invoke("show", "6s");
+            cy.wait(1000);
+            cy.get("#surname").type("Olivares Sánchez");
+        })
+        
     })
 })
