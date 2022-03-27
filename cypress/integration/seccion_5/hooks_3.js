@@ -21,7 +21,7 @@ describe('Reto de la función Hooks', () => {
     })
 
     after(() => {
-        cy.xpath('//a[contains(@class,"panelTrigger activated-welcome")]').should('be.visible').click({force:true});
+        cy.xpath('//a[contains(@class,"panelTrigger activated-welcome")]').should('have.class', 'activated-welcome').click({force:true});
         cy.wait(2000);
         cy.xpath('//a[@href="/index.php/auth/logout"][contains(.,"Logout")]').should('be.visible').click({force:true});
         cy.wait(2000);
