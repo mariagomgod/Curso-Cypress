@@ -17,5 +17,8 @@ describe('comandos personalizados', () => {
     it('Demo 1', () => {
         cy.Texto_visible("#userName", "Juan");
         cy.Texto_visible("#userEmail", "juan@gmail.com");
+        cy.Texto_visible_xpath("//textarea[contains(@id,'currentAddress')]", "Dirección uno");
+        cy.Texto_visible_xpath("//textarea[contains(@id,'permanentAddress')]", "Dirección dos");
+        cy.Click_force_xpath("//button[contains(@id,'submit')]");
     })
 })

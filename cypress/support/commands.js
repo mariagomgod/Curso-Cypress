@@ -28,3 +28,23 @@ Cypress.Commands.add('Texto_visible', (selector, texto) => {
     cy.get(selector).should('be.visible').type(texto);
     cy.wait(1000);
 })
+
+Cypress.Commands.add('Texto_visible_xpath', (selector, texto) => { 
+    cy.xpath(selector).should('be.visible').type(texto);
+    cy.wait(1000);
+})
+
+Cypress.Commands.add('Click', (selector) => { 
+    cy.get(selector).should('be.visible').click();
+    cy.wait(1000);
+})
+
+Cypress.Commands.add('Click_force', (selector) => { 
+    cy.get(selector).should('be.visible').click({force:true});
+    cy.wait(1000);
+})
+
+Cypress.Commands.add('Click_force_xpath', (selector) => { 
+    cy.xpath(selector).should('be.visible').click({force:true});
+    cy.wait(1000);
+})
