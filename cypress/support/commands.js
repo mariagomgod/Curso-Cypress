@@ -48,3 +48,31 @@ Cypress.Commands.add('Click_force_xpath', (selector) => {
     cy.xpath(selector).should('be.visible').click({force:true});
     cy.wait(1000);
 })
+
+// Funciones por conjunto o completas
+
+// Función web ToolsQA
+
+Cypress.Commands.add('Bloque_ToolsQA', (name, email, dir1, dir2) => { 
+    cy.get('#userName').should('be.visible').type(name);
+    cy.wait(1000);
+    cy.get('#userEmail').should('be.visible').type(email);
+    cy.wait(1000);
+    cy.get('#currentAddress').should('be.visible').type(dir1);
+    cy.wait(1000);
+    cy.get('#permanentAddress').should('be.visible').type(dir2);
+    cy.wait(1000);
+    cy.get('#submit').should('be.visible').click({force:true});
+    cy.wait(1000);
+})
+
+Cypress.Commands.add('Bloque_ToolsQA_Dos', (name, email, dir1, dir2) => { 
+    cy.Texto_visible("#userName", name);
+    cy.Texto_visible("#userEmail", email);
+    cy.Texto_visible_xpath("//textarea[contains(@id,'currentAddress')]", dir1);
+    cy.Texto_visible_xpath("//textarea[contains(@id,'permanentAddress')]", dir2);
+    cy.Click_force_xpath("//button[contains(@id,'submit')]");
+})
+
+
+

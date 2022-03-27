@@ -14,11 +14,15 @@ describe('comandos personalizados', () => {
         cy.wait(1000);
     })
 
-    it('Demo 1', () => {
+    it.skip('Demo 1', () => {
         cy.Texto_visible("#userName", "Juan");
         cy.Texto_visible("#userEmail", "juan@gmail.com");
         cy.Texto_visible_xpath("//textarea[contains(@id,'currentAddress')]", "Dirección uno");
         cy.Texto_visible_xpath("//textarea[contains(@id,'permanentAddress')]", "Dirección dos");
         cy.Click_force_xpath("//button[contains(@id,'submit')]");
+    })
+
+    it('Demo 2 por bloque', () => {
+       cy.Bloque_ToolsQA_Dos('Juan', 'juan@gmail.com', 'Dirección uno', 'Direccion 2'); 
     })
 })
