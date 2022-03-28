@@ -114,5 +114,11 @@ Cypress.Commands.add('Validar_campo', (selector, men, nombre_campo) => {
     })
 })
 
+Cypress.Commands.add('Validar_campo2', (selector, men, nombre_campo) => { 
+    cy.xpath(selector).should('be.visible').should('contain', men).then((val) => {
+        cy.log("The " + nombre_campo + " is not valid" );
+    })
+})
+
 
 
