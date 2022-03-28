@@ -22,7 +22,12 @@ describe('descripcion', () => {
     })
 
     
-    it('test', () => {
+    it.skip('test', () => {
         cy.Bloque_Reto_Form('Carlos', 'Rodríguez', 'carlos@gmail.com', '699991234', 'Dirección uno', 'Málaga', 'Alabama', '1234', 'demo.com', 'Proyecto demo uno');
+    })
+
+    it('prueba validar email', () => {
+        cy.Bloque_Reto_Form('Carlos', 'Rodríguez', 'carlos.com', '699991234', 'Dirección uno', 'Málaga', 'Alabama', '1234', 'demo.com', 'Proyecto demo uno');
+        cy.Validar_campo('//small[contains(@data-bv-validator, "email address")]', 'Please supply a valid email address', 'Email');
     })
 })

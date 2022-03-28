@@ -101,5 +101,18 @@ Cypress.Commands.add('Bloque_Reto_Form', (name, last_name, email,phone, address,
     cy.wait(1000);
 })
 
+Cypress.Commands.add('Validar_campo', (selector, men, nombre_campo) => { 
+    cy.xpath(selector).should('be.visible').then((val) => {
+        let dato = val.text();
+        let mensaje = men;
+        cy.log(dato)
+        expect(dato).to.eq(mensaje)
+
+        if(dato == mensaje) {
+            cy.log("The " + nombre_campo + " is not valid" );
+        }
+    })
+})
+
 
 
