@@ -28,18 +28,9 @@ describe('Reto de la función Hooks', () => {
     })
 
     it('test uno', () => {
-        cy.xpath('//b[contains(.,"Admin")]').should('be.visible').click({force:true});
-        cy.wait(3000);
+        cy.log("hola")
     })
 
-    it('test dos', () => {
-        cy.xpath('//b[contains(.,"Leave")]').should('be.visible').click({force:true});
-        cy.wait(3000);
-    })
-
-    it('test tres', () => {
-        cy.xpath('//b[contains(.,"Performance")]').should('be.visible').click({force:true});
-        cy.wait(3000);
-    })
+    
 
 })
