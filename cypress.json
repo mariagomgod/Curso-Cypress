@@ -3,5 +3,5 @@
     "viewportWidth": 1500,
     "viewportHeight": 900,
     "defaultCommandTimeout": 15000,
-    "pageLoadTimeout": 9000
+    "pageLoadTimeout": 12000
 }

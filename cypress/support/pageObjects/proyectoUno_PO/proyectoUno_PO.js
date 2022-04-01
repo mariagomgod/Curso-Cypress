@@ -11,8 +11,10 @@ class ProyectoUno_Po {
     seccionUno(name, last_name, email) {
         cy.xpath('//input[contains(@name,"first_name")]').should('be.visible').type(name, {force:true});
         cy.wait(1000);
+        cy.screenshot("Campo nombre");
         cy.xpath('//input[contains(@name,"last_name")]').should('be.visible').type(last_name, {force:true});
         cy.wait(1000);
+        cy.screenshot("Campo apellido");
         cy.xpath('//input[contains(@name,"email")]').should('be.visible').type(email, {force:true});
         cy.wait(1000);
     }
