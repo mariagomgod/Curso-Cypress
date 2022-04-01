@@ -27,7 +27,7 @@ describe("Tipos de Selectores", () => {
         cy.title().should('eq', 'ToolsQA');
         cy.wait(1000);
 
-        cy.xpath("//*[@id='userName']").should("be.visible").type("Juan Perez");
+        cy.xpath("//*[@id='userName']").should("be.visible", {timeout:5000}).type("Juan Perez");
         cy.xpath("//input[@id='userEmail']").should("be.visible").type("juan@gmail.com");
         cy.xpath("//textarea[@id='currentAddress']").should("be.visible").type("Demo de la dirección");
     })
