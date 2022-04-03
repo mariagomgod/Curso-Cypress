@@ -1,6 +1,7 @@
-{
-    "nombre": "María",
-    "email": "maria@gmail.com",
-    "dir1": "Dirección uno",
-    "dir2": "Dirección dos"
-}
+[
+    {"nombre": "María", "email": "maria@gmail.com", "dir1": "Dirección uno_1", "dir2": "Dirección dos_1"},
+    {"nombre": "María2", "email": "maria1@gmail.com", "dir1": "Dirección uno_2", "dir2": "Dirección dos_2"},
+    {"nombre": "María3", "email": "maria2@gmail.com", "dir1": "Dirección uno_3", "dir2": "Dirección dos_3"},
+    {"nombre": "María4", "email": "maria3@gmail.com", "dir1": "Dirección uno_4", "dir2": "Dirección dos_4"},
+    {"nombre": "María5", "email": "maria4@gmail.com", "dir1": "Dirección uno_5", "dir2": "Dirección dos_5"}
+]
