@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.1.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-xpath": "^1.6.2"
@@ -24,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/mariagomgod/Curso-Cypress/issues"
   },
-  "homepage": "https://github.com/mariagomgod/Curso-Cypress#readme"
+  "homepage": "https://github.com/mariagomgod/Curso-Cypress#readme",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
 }

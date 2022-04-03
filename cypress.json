@@ -3,5 +3,6 @@
     "viewportWidth": 1500,
     "viewportHeight": 900,
     "defaultCommandTimeout": 15000,
-    "pageLoadTimeout": 12000
+    "pageLoadTimeout": 12000,
+    "testFiles": "**/*.feature"
 }
