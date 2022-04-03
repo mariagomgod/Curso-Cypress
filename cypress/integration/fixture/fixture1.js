@@ -23,7 +23,7 @@ describe('Carga por Fixture', () => {
         cy.title().should('eq', 'ToolsQA');
         cy.wait(1000); */
 
-        cy.fixture("datos2").then(testdata => {
+        cy.fixture("MOCK_DATA").then(testdata => {
             testdata.forEach(data => {
                 const d_nombre = data.nombre;
                 const d_email = data.email;
