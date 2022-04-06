@@ -57,6 +57,20 @@ describe('API consulta GET', () => {
         })
     })
 
+    it('Test API método PUT', () => {
+        cy.request({
+            method: "PUT",
+            url: "http://localhost:3000/posts/1",
+            body: {
+                "id": 1,
+                "title": "Modificando un valor desde cypress en la api",
+                "author": "Rodrigo Villanueva"
+            }
+        }).then((response) => {
+            expect(response.status).to.eql(200);
+        })
+    })
+
     it('Insertar múltiples valores en la API', () => {
 
         for (let x = 1 ; x <= 10; x++) {
