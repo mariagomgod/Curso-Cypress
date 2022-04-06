@@ -42,4 +42,39 @@ describe('API consulta GET', () => {
             expect(datos[0]).has.property("author", "Rodrigo");
         })
     })
+
+    it('Test API método POST', () => {
+        cy.request({
+            method: "POST",
+            url: "http://localhost:3000/posts",
+            body: {
+                "id": 4,
+                "title": "Insertando un valor en cypress api",
+                "author": "Juan Pérez"
+            }
+        }).then((response) => {
+            expect(response.status).to.eql(201);
+        })
+    })
+
+    it('Insertar múltiples valores en la API', () => {
+
+        for (let x = 1 ; x <= 10; x++) {
+
+            let tx = Math.random().toString(10);
+
+            cy.request({
+                method: "POST",
+                url: "http://localhost:3000/posts",
+                body: {
+                    "id": 8 + x,
+                    "title": tx,
+                    "author": "Author " + tx
+                }
+            }).then((response) => {
+                expect(response.status).to.eql(201);
+            })
+        }
+        
+    })
 })
