@@ -71,6 +71,15 @@ describe('API consulta GET', () => {
         })
     })
 
+    it('Test API método DELETE', () => {
+        cy.request({
+            method: "DELETE",
+            url: "http://localhost:3000/posts/2",
+        }).then((response) => {
+            expect(response.status).to.eql(200);
+        })
+    })
+
     it('Insertar múltiples valores en la API', () => {
 
         for (let x = 1 ; x <= 10; x++) {
