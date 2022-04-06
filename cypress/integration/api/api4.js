@@ -24,4 +24,22 @@ describe('API consulta GET', () => {
             expect(response.status).to.eq(200);
         })
     })
+
+    it('Test API GET método 2', () => {
+        cy.request({
+            method: "GET",
+            url: "http://localhost:3000/posts",
+            headers: {
+                accept: "application/json"
+            }
+        }).then((response) => {
+            let datos;
+            datos = JSON.parse(JSON.stringify(response.body));
+
+            cy.log(datos);
+
+            expect(datos[0]).has.property("title", "Cypress ");
+            expect(datos[0]).has.property("author", "Rodrigo");
+        })
+    })
 })
