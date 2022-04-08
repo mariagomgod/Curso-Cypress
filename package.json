@@ -4,7 +4,7 @@
   "description": "\"Curso de Cypress 2021\"",
   "main": "index.js",
   "dependencies": {
-    "cypress": "3.5.0"
+    "cypress": "9.5.3"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.1.0",
